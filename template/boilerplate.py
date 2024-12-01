@@ -32,7 +32,8 @@ def get_solution(input_data):
 
 def main():
     """Imports data then gets and prints the solution."""
-    data_filename = "data.txt"
+    # data_filename = "data.txt"
+    data_filename = "testcase.txt"
     input_data = read_data_file(data_filename)
     solution = get_solution(input_data)
 
