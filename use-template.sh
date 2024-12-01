@@ -32,9 +32,15 @@ cp ./template/boilerplate.py $new_dir/$filename1
 cp ./template/boilerplate.py $new_dir/$filename2
 
 # Set the data directory in the python files to be run from the root of this repo
-sed -i "s/.\//.\/$year\/$day_dir\//g" $new_dir/$filename1
-sed -i "s/.\//.\/$year\/$day_dir\//g" $new_dir/$filename2
+sed -i "s|./|./$year/$day_dir/|g" $new_dir/$filename1
+sed -i "s|./|./$year/$day_dir/|g" $new_dir/$filename2
 
-# Get the input data
+# Get the public test case, extract it from the HTML, remove extra newline
+curl https://adventofcode.com/$year/day/$day > $new_dir/testcase.txt
+sed -zi 's|.*<pre><code>||' $new_dir/testcase.txt
+sed -zi 's|</code>.*||' $new_dir/testcase.txt
+head -c -1 $new_dir/testcase.txt > tmp; mv tmp $new_dir/testcase.txt
+
+# Get the session-based input data
 session=$(cat .env)
 curl --cookie "session=$session" https://adventofcode.com/$year/day/$day/input > $new_dir/data.txt
