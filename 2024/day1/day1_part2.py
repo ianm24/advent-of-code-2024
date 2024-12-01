@@ -1,7 +1,5 @@
 """Module containing boilerplate code to be used for each day of advent."""
 
-import numpy as np
-
 DATA_FILEPATH = "./2024/day1/"
 
 # =============================Helper Functions START==========================
