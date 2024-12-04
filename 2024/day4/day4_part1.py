@@ -42,9 +42,8 @@ def get_cardinal_xmas_matches(word_search_mat, direction):
 
     return num_xmas
 
-# Direction 0 for axis1=0, 1 for axis1=1
 
-
+# Direction 0 for normal diagonal, 1 for opposite direction diagonal
 def get_diagonal_xmas_matches(word_search_mat, direction):
     num_xmas = 0
     if direction == 1:
